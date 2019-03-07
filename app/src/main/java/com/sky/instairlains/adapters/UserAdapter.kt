@@ -20,7 +20,6 @@ class UserAdapter(private val context: Context) : RecyclerView.Adapter<UserAdapt
         return ItemUserHolder(view)
     }
 
-
     override fun getItemCount(): Int  = usersList.size
 
     override fun onBindViewHolder(holder: ItemUserHolder, position: Int) {

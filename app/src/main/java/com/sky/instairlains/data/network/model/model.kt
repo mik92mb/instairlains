@@ -2,49 +2,71 @@ package com.sky.instairlains.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-
 data class User(
 
-    @SerializedName ("id")
+    @SerializedName("id")
     val id: Int,
-    @SerializedName ("name")
+    @SerializedName("name")
     val name: String,
-    @SerializedName ("username")
+    @SerializedName("username")
     val userName: String,
-    @SerializedName ("email")
+    @SerializedName("email")
     val email: String,
-    @SerializedName ("address")
+    @SerializedName("address")
     val address: Address,
-    @SerializedName ("phone")
+    @SerializedName("phone")
     val phone: String,
-    @SerializedName ("website")
+    @SerializedName("website")
     val website: String,
-    @SerializedName ("company")
+    @SerializedName("company")
     val company: Company
 ) {
-
     override fun toString(): String {
         return this.name.plus(" ").plus(this.userName)
     }
 }
 
-
 data class Address(
-    @SerializedName ("street")
+    @SerializedName("street")
     val street: String,
-    @SerializedName ("suite")
+    @SerializedName("suite")
     val suite: String,
-    @SerializedName ("city")
+    @SerializedName("city")
     val city: String,
-    @SerializedName ("zipCode")
+    @SerializedName("zipCode")
     val zipCode: String
 )
 
 data class Company(
-    @SerializedName ("name")
+    @SerializedName("name")
     val name: String,
-    @SerializedName ("catchPhrase")
+    @SerializedName("catchPhrase")
     val catchPhrase: String,
-    @SerializedName ("bs")
+    @SerializedName("bs")
     val bs: String
+)
+
+data class Post(
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("title")
+    val title: String,
+    @SerializedName("body")
+    val body: String
+)
+
+data class Album(
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("title")
+    val title: String
+)
+
+data class Photo(
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("title")
+    val title: String,
+    @SerializedName("thumbnailUrl")
+    val thumbnailUrl: String
 )
