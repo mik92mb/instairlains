@@ -9,7 +9,7 @@ data class User(
     val id: Int,
     @SerializedName ("name")
     val name: String,
-    @SerializedName ("userName")
+    @SerializedName ("username")
     val userName: String,
     @SerializedName ("email")
     val email: String,
@@ -21,7 +21,12 @@ data class User(
     val website: String,
     @SerializedName ("company")
     val company: Company
-)
+) {
+
+    override fun toString(): String {
+        return this.name.plus(" ").plus(this.userName)
+    }
+}
 
 
 data class Address(

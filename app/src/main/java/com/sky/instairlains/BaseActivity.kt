@@ -1,17 +1,7 @@
-package com.sky.instairlains.activity
+package com.sky.instairlains
 
-import android.support.v7.app.AppCompatActivity
-import com.sky.instairlains.BASE_URL
-import com.sky.instairlains.data.network.PostAPI
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatActivity
 
-open class BaseActivity : AppCompatActivity(){
-
-
-    private val apiCLient = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(PostAPI::class.java)
-}
+@SuppressLint("Registered")
+open class BaseActivity : AppCompatActivity(){}
