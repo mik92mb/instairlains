@@ -10,7 +10,7 @@ data class Fly(
     @SerializedName("to")
     val to: String,
     @SerializedName("flight_number")
-     val flight_number: String,
+    val flight_number: String,
     @SerializedName("departure")
     val departure: String,
     @SerializedName("arrival")
@@ -22,6 +22,7 @@ data class Fly(
     @SerializedName("airline")
     val airline: AirLine
 
+
 )
 
 data class AirLine(
@@ -31,6 +32,19 @@ data class AirLine(
     @SerializedName("name")
     val name: String,
     @SerializedName("logo")
-    val logo: String
+    val logo: String,
+
+    var plane: Plane
+)
+
+data class Plane(
+
+    @SerializedName("price")
+    val price: Int,
+    @SerializedName("seats")
+    val seats: Int,
+    @SerializedName("currency")
+    val currency: String
+
 
 )

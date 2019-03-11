@@ -14,7 +14,7 @@ import timber.log.Timber.i
 
 class AirlainsAdapter(private val context: Context) : RecyclerView.Adapter<AirlainsAdapter.FlyHolder>() {
 
-    private val flyList: ArrayList<Fly> = ArrayList()
+    val flyList: ArrayList<Fly> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlyHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_fly, parent, false)
@@ -29,7 +29,6 @@ class AirlainsAdapter(private val context: Context) : RecyclerView.Adapter<Airla
 
     fun addAll(list: List<Fly>) {
         flyList.addAll(list)
-        i(itemCount.toString())
         notifyDataSetChanged()
     }
 
@@ -45,8 +44,15 @@ class AirlainsAdapter(private val context: Context) : RecyclerView.Adapter<Airla
             view.airlainName.text = fly.airline.name
             view.departure.text = fly.departure
             view.arrival.text = fly.arrival
-            view.stops.text = fly.stops
+            view.stops.text = fly.stops.plus(" stops")
             view.duration.text = fly.duration
+            if (fly.airline.plane == null) {
+                view.progressPrice.visibility = View.VISIBLE
+            } else {
+                view.price.text = fly.airline.plane.price.toString()
+                view.progressPrice.visibility = View.INVISIBLE
+                view.seats.text = fly.airline.plane.seats.toString().plus(" seats")
+            }
             setImageLogo(view, fly)
         }
 

@@ -1,6 +1,7 @@
 package com.sky.instairlains.data.network.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
 
@@ -20,7 +21,7 @@ data class User(
     val website: String,
     @SerializedName("company")
     val company: Company
-) {
+): Serializable {
     override fun toString(): String {
         return this.name.plus(" ").plus(this.userName)
     }
@@ -35,7 +36,7 @@ data class Address(
     val city: String,
     @SerializedName("zipCode")
     val zipCode: String
-)
+) : Serializable
 
 data class Company(
     @SerializedName("name")
@@ -44,9 +45,11 @@ data class Company(
     val catchPhrase: String,
     @SerializedName("bs")
     val bs: String
-)
+) : Serializable
 
 data class Post(
+    @SerializedName("userId")
+    val userId: Int,
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")
@@ -56,6 +59,8 @@ data class Post(
 )
 
 data class Album(
+    @SerializedName("userId")
+    val userId: Int,
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")

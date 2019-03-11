@@ -1,6 +1,5 @@
 package com.sky.instairlains.fragments
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sky.instairlains.R
 import com.sky.instairlains.adapters.AirlainsAdapter
-import com.sky.instairlains.viewModels.FlyViewModel
+import com.sky.instairlains.viewModels.SettingsViewModel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import timber.log.Timber.i
 
 class SettingFragment : Fragment() {
 
-    private lateinit var adapter : AirlainsAdapter
-    private lateinit var flyViewModel: FlyViewModel
+    private lateinit var adapter: AirlainsAdapter
+    private lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -28,27 +27,29 @@ class SettingFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        flyViewModel = ViewModelProviders.of(this).get(FlyViewModel::class.java)
+        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel::class.java)
         adapter = AirlainsAdapter(view.context)
         setRecyclerAirlains()
-        flyViewModel.getFly()
-        flyViewModel.success
-            .observe(this, Observer {
-              //  i(it.toString())
-                i(it.size.toString())
-                adapter.clear()
-                adapter.addAll(it)
-            })
-        flyViewModel.error
-            .observe(this, Observer {
-                i(it)
-                Toast.makeText(context,"ERRORE! Files not found!", Toast.LENGTH_SHORT).show()
-            })
+        seCallGetFly(adapter)
     }
 
+    private fun seCallGetFly(adapter: AirlainsAdapter) {
+        settingsViewModel.getFly(adapter)
+        settingsViewModel.success
+            .observe(this, Observer {
+                progressAirlains.visibility = View.GONE
+           //     adapter.clear()
+            //    adapter.addAll(it)
+            })
+        settingsViewModel.error.observe(this, Observer {
+            progressAirlains.visibility = View.GONE
+            i(it)
+            Toast.makeText(context, "ERRORE! Files not found!", Toast.LENGTH_SHORT).show()
+        })
+    }
 
     private fun setRecyclerAirlains() {
-        recyclerAirlains.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL,false)
+        recyclerAirlains.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerAirlains.adapter = adapter
     }
 
