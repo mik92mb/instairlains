@@ -16,6 +16,8 @@ interface PostAPI {
     @GET("/albums")
     fun getAlbums(): Observable<List<Album>>
 
+    @GET("/photos")
+    fun getPhotos(): Observable<List<Photo>>
 
     @GET("/json/airline-tickets.php")
     fun getFly(@Query("from") from: String, @Query("to") to: String): Observable<List<Fly>>

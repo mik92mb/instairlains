@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <color name="sky1">#F08300</color>
+    <color name="sky2">#E3000F</color>
+    <color name="sky3">#A72879</color>
+    <color name="sky4">#064497</color>
 </resources>

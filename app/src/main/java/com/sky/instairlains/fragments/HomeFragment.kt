@@ -1,6 +1,9 @@
 package com.sky.instairlains.fragments
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +17,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sky.instairlains.IMAGE_URL
-import com.sky.instairlains.R
 import com.sky.instairlains.activity.DetailActivity
 import com.sky.instairlains.adapters.OnItemClick
 import com.sky.instairlains.adapters.UserAdapter
@@ -31,7 +33,7 @@ class HomeFragment : Fragment(), OnItemClick {
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(com.sky.instairlains.R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,6 +43,7 @@ class HomeFragment : Fragment(), OnItemClick {
         setRecyclerView(view.context)
         setImageView()
         callGetUSer()
+
     }
 
     private fun setImageView() {

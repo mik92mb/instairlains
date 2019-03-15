@@ -46,7 +46,7 @@ class AirlainsAdapter(private val context: Context) : RecyclerView.Adapter<Airla
             view.arrival.text = fly.arrival
             view.stops.text = fly.stops.plus(" stops")
             view.duration.text = fly.duration
-            if (fly.airline.plane == null) {
+            if (fly.airline.plane != null) {
                 view.progressPrice.visibility = View.VISIBLE
             } else {
                 view.price.text = fly.airline.plane.price.toString()

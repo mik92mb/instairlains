@@ -34,9 +34,14 @@ data class Address(
     val suite: String,
     @SerializedName("city")
     val city: String,
-    @SerializedName("zipCode")
+    @SerializedName("zipcode")
     val zipCode: String
-) : Serializable
+) : Serializable {
+
+    override fun toString(): String {
+        return street.plus(" ").plus(suite).plus(",").plus(city).plus("-").plus(zipCode)
+    }
+}
 
 data class Company(
     @SerializedName("name")
@@ -68,6 +73,8 @@ data class Album(
 )
 
 data class Photo(
+    @SerializedName("albumId")
+    val albumId: Int,
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")

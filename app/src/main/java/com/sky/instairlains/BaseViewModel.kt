@@ -13,14 +13,14 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val subscription by lazy { CompositeDisposable() }
 
-    protected val apiClient : PostAPI = Retrofit.Builder()
+    protected val apiClient: PostAPI = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(PostAPI::class.java)
 
-    protected val apiClientAirlain : PostAPI = Retrofit.Builder()
+    protected val apiClientAirlain: PostAPI = Retrofit.Builder()
         .baseUrl(AIRLAINS_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -34,7 +34,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-    protected fun Disposable.autoDispose (){
+    protected fun Disposable.autoDispose() {
         subscription.add(this)
     }
 }
