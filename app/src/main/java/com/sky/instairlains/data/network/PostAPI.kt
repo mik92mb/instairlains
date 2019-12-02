@@ -23,7 +23,7 @@ interface PostAPI {
     fun getFly(@Query("from") from: String, @Query("to") to: String): Observable<List<Fly>>
 
     @GET("/json/airline-tickets-price.php")
-    fun getPrice(@Query("flight_number") flight_number: String, @Query("from") from: String, @Query("to") to: String): Observable<Plane>
+    fun getTickets(@Query("flight_number") flight_number: String, @Query("from") from: String, @Query("to") to: String): Observable<Ticket>
 
 
 }

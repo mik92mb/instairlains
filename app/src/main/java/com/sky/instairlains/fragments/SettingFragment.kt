@@ -16,6 +16,7 @@ import com.sky.instairlains.viewModels.SettingsViewModel
 import kotlinx.android.synthetic.main.fragment_settings.*
 import timber.log.Timber.i
 
+
 class SettingFragment : Fragment() {
 
     private lateinit var adapter: AirlainsAdapter
@@ -34,18 +35,19 @@ class SettingFragment : Fragment() {
     }
 
     private fun seCallGetFly(adapter: AirlainsAdapter) {
-        settingsViewModel.getFly(adapter)
+        settingsViewModel.getAll(adapter)
         settingsViewModel.success
             .observe(this, Observer {
                 progressAirlains.visibility = View.GONE
-           //     adapter.clear()
-            //    adapter.addAll(it)
+                adapter.clear()
+                adapter.addAll(it)
             })
         settingsViewModel.error.observe(this, Observer {
             progressAirlains.visibility = View.GONE
             i(it)
             Toast.makeText(context, "ERRORE! Files not found!", Toast.LENGTH_SHORT).show()
         })
+
     }
 
     private fun setRecyclerAirlains() {

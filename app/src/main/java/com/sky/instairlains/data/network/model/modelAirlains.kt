@@ -34,10 +34,10 @@ data class AirLine(
     @SerializedName("logo")
     val logo: String,
 
-    var plane: Plane
+    var ticket: Ticket? = null
 )
 
-data class Plane(
+data class Ticket(
 
     @SerializedName("price")
     val price: Int,

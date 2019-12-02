@@ -9,7 +9,6 @@ import com.sky.instairlains.R
 import com.sky.instairlains.data.network.model.Fly
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_fly.view.*
-import timber.log.Timber.i
 
 
 class AirlainsAdapter(private val context: Context) : RecyclerView.Adapter<AirlainsAdapter.FlyHolder>() {
@@ -46,12 +45,10 @@ class AirlainsAdapter(private val context: Context) : RecyclerView.Adapter<Airla
             view.arrival.text = fly.arrival
             view.stops.text = fly.stops.plus(" stops")
             view.duration.text = fly.duration
-            if (fly.airline.plane != null) {
-                view.progressPrice.visibility = View.VISIBLE
-            } else {
-                view.price.text = fly.airline.plane.price.toString()
+            if (fly.airline.ticket != null) {
+                view.price.text = fly.airline.ticket?.price.toString()
                 view.progressPrice.visibility = View.INVISIBLE
-                view.seats.text = fly.airline.plane.seats.toString().plus(" seats")
+                view.seats.text = fly.airline.ticket?.seats.toString().plus(" seats")
             }
             setImageLogo(view, fly)
         }
